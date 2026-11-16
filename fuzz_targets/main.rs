@@ -152,6 +152,7 @@ fn test_with_inline_cap<const N: usize>(
 
     for op in ops {
         match op {
+            #[allow(clippy::new_instead_of_clear)]
             Op::New => {
                 small_vec = SmallVec::new();
                 std_vec = Vec::new();
