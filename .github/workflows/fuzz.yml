@@ -15,7 +15,9 @@ jobs:
           restore-keys: |
             fuzz-corpus-
       - run: cargo install cargo-fuzz
-      - run: cargo fuzz run main --fuzz-dir . -- -max_total_time=3600 -rss_limit_mb=4096
+      - run: |
+          cargo fuzz run main --fuzz-dir . -- \
+          -max_total_time=3600 -rss_limit_mb=4096
       - run: cargo fuzz cmin main --fuzz-dir .
         if: always()
       - uses: actions/cache/save@v6
